@@ -1,0 +1,30 @@
+{
+  "overview": "PropFlow is a world-class Real Estate CRM with role-based access for Telecallers, Sales Persons, and Admins. Features dynamic lead management with full status tracking, call history logging, task management, advanced reporting, WhatsApp integration, and mobile/desktop responsive views.",
+  "features": [
+    "Role-based login (Telecaller/Sales/Admin) with project selection",
+    "Dynamic lead table with status date tracking (Not Connect → SV Done)",
+    "Lead status count boxes and aging boxes with click-to-filter",
+    "Telecaller dashboard with call log, task management, WhatsApp button",
+    "Sales Person dashboard with SV status tracking and lead updates",
+    "Admin dashboard with full lead visibility, reports, and task assignment",
+    "Advanced reports: Telecaller performance, project summary, monthly trends, conversion funnel",
+    "Call history logging with Excel export",
+    "Task management with role-based assignment and status updates",
+    "Mobile-compact and Desktop-full view toggle",
+    "Lead Excel download with multi-select filters",
+    "Call reminder system for overdue follow-ups",
+    "Software and Project inquiry forms",
+    "DD/MMM/YYYY date format throughout"
+  ],
+  "category": "productivity",
+  "tags": [
+    "real-estate",
+    "crm",
+    "lead-management",
+    "sales",
+    "telecalling",
+    "reports",
+    "task-management"
+  ],
+  "last_updated": "2026-04-13T05:13:10.639Z"
+}

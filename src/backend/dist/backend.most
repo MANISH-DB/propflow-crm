@@ -1,0 +1,155 @@
+// Version: 1.0.0
+type CallHistory__458315097 =
+  {
+    date : DateStr__422871139;
+    mobile : Text;
+    name : Text;
+    projectName : Text;
+    remark : Text;
+    status : Text;
+    telecaller : Text
+  };
+type ColumnDef__146752553 =
+  {
+    colLabel : Text;
+    colType : Text;
+    key : Text;
+    options : [Text];
+    sortOrder : Nat;
+    visible : Bool
+  };
+type DateStr__311350206 = DateStr__328324513;
+type DateStr__321447951 = DateStr__328324513;
+type DateStr__328324513 = Text;
+type DateStr__422871139 = DateStr__328324513;
+type DateStr__923420244 = DateStr__328324513;
+type InquiryId__217425580 = InquiryId__340326671;
+type InquiryId__340326671 = Nat;
+type LeadId__1073473045 = Nat;
+type LeadId__558362835 = LeadId__1073473045;
+type Lead__531162083 =
+  {
+    assignedSales : Text;
+    budget : Text;
+    firstName : Text;
+    id : LeadId__558362835;
+    lastName : Text;
+    latestStatus : Text;
+    latestStatusDate : DateStr__311350206;
+    leadCloseStatus : Text;
+    leadDate : DateStr__311350206;
+    lossReason : Text;
+    mobileNo : Text;
+    projectName : Text;
+    remarks1 : Text;
+    remarks2 : Text;
+    requirement : Text;
+    source : Text;
+    srNo : Nat;
+    statusDate : DateStr__311350206;
+    statusDates : StatusDates__583310923;
+    svNextFollowup : DateStr__311350206;
+    svRemark : Text;
+    svStatus : Text;
+    telecaller : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type ProjectInquiry__256780854 =
+  {
+    id : InquiryId__217425580;
+    mobile : Text;
+    name : Text;
+    projectName : Text;
+    source : Text;
+    srNo : Nat;
+    svPlan : DateStr__321447951
+  };
+type Project__544749340 = {brochure : Text; projectName : Text};
+type SalesCallHistory__617794395 =
+  {
+    date : DateStr__422871139;
+    mobile : Text;
+    name : Text;
+    projectName : Text;
+    remark : Text;
+    salesPerson : Text;
+    status : Text
+  };
+type SoftwareInquiry__830063632 = {mobile : Text; name : Text};
+type StatusDates__583310923 = [(Text, DateStr__311350206)];
+type TaskId__207642484 = Nat;
+type TaskId__679737576 = TaskId__207642484;
+type Task__431803600 =
+  {
+    assignedTo : Text;
+    createdBy : Text;
+    createdDate : DateStr__923420244;
+    description : Text;
+    dueDate : DateStr__923420244;
+    leadSr : Nat;
+    role : Text;
+    status : Text;
+    taskId : TaskId__679737576;
+    taskTitle : Text
+  };
+type Telecaller__483445603 = {name : Text; role : Text};
+actor {
+  stable callHistory :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?CallHistory__458315097]];
+      var elementIndex : Nat__490723111
+    };
+  stable leads :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Lead__531162083]];
+      var elementIndex : Nat__490723111
+    };
+  stable nextInquiryId : {var value : Nat};
+  stable nextLeadId : {var value : Nat};
+  stable nextTaskId : {var value : Nat};
+  stable projectInquiries :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ProjectInquiry__256780854]];
+      var elementIndex : Nat__490723111
+    };
+  stable projects :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Project__544749340]];
+      var elementIndex : Nat__490723111
+    };
+  stable salesCallHistory :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?SalesCallHistory__617794395]];
+      var elementIndex : Nat__490723111
+    };
+  stable schemaDefs :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ColumnDef__146752553]];
+      var elementIndex : Nat__490723111
+    };
+  stable softwareInquiries :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?SoftwareInquiry__830063632]];
+      var elementIndex : Nat__490723111
+    };
+  stable tasks :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Task__431803600]];
+      var elementIndex : Nat__490723111
+    };
+  stable telecallers :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Telecaller__483445603]];
+      var elementIndex : Nat__490723111
+    }
+};

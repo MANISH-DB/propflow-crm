@@ -1,0 +1,143 @@
+type Telecaller = 
+ record {
+   name: text;
+   role: text;
+ };
+type TaskId = nat;
+type Task = 
+ record {
+   assignedTo: text;
+   createdBy: text;
+   createdDate: DateStr;
+   description: text;
+   dueDate: DateStr;
+   leadSr: nat;
+   role: text;
+   status: text;
+   taskId: TaskId;
+   taskTitle: text;
+ };
+type StatusDates = 
+ vec record {
+       text;
+       DateStr;
+     };
+type SoftwareInquiry = 
+ record {
+   mobile: text;
+   name: text;
+ };
+type SalesCallHistory = 
+ record {
+   date: DateStr;
+   mobile: text;
+   name: text;
+   projectName: text;
+   remark: text;
+   salesPerson: text;
+   status: text;
+ };
+type ProjectInquiry = 
+ record {
+   id: InquiryId;
+   mobile: text;
+   name: text;
+   projectName: text;
+   source: text;
+   srNo: nat;
+   svPlan: DateStr;
+ };
+type Project = 
+ record {
+   brochure: text;
+   projectName: text;
+ };
+type LeadId = nat;
+type Lead = 
+ record {
+   assignedSales: text;
+   budget: text;
+   firstName: text;
+   id: LeadId;
+   lastName: text;
+   latestStatus: text;
+   latestStatusDate: DateStr;
+   leadCloseStatus: text;
+   leadDate: DateStr;
+   lossReason: text;
+   mobileNo: text;
+   projectName: text;
+   remarks1: text;
+   remarks2: text;
+   requirement: text;
+   source: text;
+   srNo: nat;
+   statusDate: DateStr;
+   statusDates: StatusDates;
+   svNextFollowup: DateStr;
+   svRemark: text;
+   svStatus: text;
+   telecaller: text;
+ };
+type InquiryId = nat;
+type DateStr = text;
+type ColumnDef = 
+ record {
+   colLabel: text;
+   colType: text;
+   key: text;
+   options: vec text;
+   sortOrder: nat;
+   visible: bool;
+ };
+type CallHistory = 
+ record {
+   date: DateStr;
+   mobile: text;
+   name: text;
+   projectName: text;
+   remark: text;
+   status: text;
+   telecaller: text;
+ };
+service : {
+  addCallHistory: (entry: CallHistory) -> ();
+  addLead: (lead: Lead) -> (Lead);
+  addProject: (project: Project) -> ();
+  addProjectInquiry: (inquiry: ProjectInquiry) -> (ProjectInquiry);
+  addSalesCallHistory: (entry: SalesCallHistory) -> ();
+  addSoftwareInquiry: (inquiry: SoftwareInquiry) -> ();
+  addTask: (task: Task) -> (Task);
+  addTelecaller: (t: Telecaller) -> ();
+  deleteLead: (id: LeadId) -> (bool);
+  deleteProject: (name: text) -> (bool);
+  deleteProjectInquiry: (id: InquiryId) -> (bool);
+  deleteTask: (taskId: TaskId) -> (bool);
+  deleteTelecaller: (name: text) -> (bool);
+  getAllLeads: () -> (vec Lead) query;
+  getAllProjectInquiries: () -> (vec ProjectInquiry) query;
+  getAllProjects: () -> (vec Project) query;
+  getAllSoftwareInquiries: () -> (vec SoftwareInquiry) query;
+  getAllTasks: () -> (vec Task) query;
+  getAllTelecallers: () -> (vec Telecaller) query;
+  getBrochureLink: (projectName: text) -> (opt text) query;
+  getCallHistory: (telecaller: opt text) -> (vec CallHistory) query;
+  getLeadById: (id: LeadId) -> (opt Lead) query;
+  getLeadSchema: () -> (vec ColumnDef) query;
+  getLeadsBySalesPerson: (salesPerson: text) -> (vec Lead) query;
+  getLeadsByTelecaller: (telecaller: text) -> (vec Lead) query;
+  getSalesCallHistory: (salesPerson: opt text) ->
+   (vec SalesCallHistory) query;
+  getTaskById: (taskId: TaskId) -> (opt Task) query;
+  getTasksByAssignee: (assignedTo: text) -> (vec Task) query;
+  getUniqueProjectNames: () -> (vec text) query;
+  getUniqueSalesPersons: () -> (vec text) query;
+  getUniqueTelecallers: () -> (vec text) query;
+  removeColumnDef: (key: text) -> (bool);
+  updateLead: (lead: Lead) -> (bool);
+  updateProject: (name: text, updated: Project) -> (bool);
+  updateTask: (task: Task) -> (bool);
+  updateTaskStatus: (taskId: TaskId, status: text) -> (bool);
+  updateTelecaller: (name: text, updated: Telecaller) -> (bool);
+  upsertColumnDef: (col: ColumnDef) -> ();
+}
